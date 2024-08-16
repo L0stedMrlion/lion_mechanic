@@ -34,6 +34,13 @@ Config.Mechanics = {
     { coords = vector4(117.6821, 6624.3203, 31.8618, 213.0245) },
 }
 
+Config.Lang = {
+    nodamaged = "Vehicle you want to repair is not damaged!",
+    vehiclefixed = "Vehicle has been fixed!",
+    novehnearby = "No vehicle nearby!",
+    notenoughmoney = "You don't have enough money! You need $%s"
+}
+
 Notify = function(description, icon, iconcolor, duration) -- EDIT TO YOUR OWN NOTIFICATIONS IF YOU DONT USE LIB NOTIFICATIONS!
     lib.notify({
         id = "mechanic",
