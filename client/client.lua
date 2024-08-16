@@ -30,7 +30,7 @@ for k, v in ipairs(Config.Mechanics) do
                         local isDamaged = IsVehicleDamaged(vehicle)
                         if vehicle then
                             if not isDamaged then
-                                Notify("Vehicle you want to repair is not damaged!", "fa-solid fa-wrench", "#747173", 2500)
+                                Notify(Config.Lang.nodamaged, "fa-solid fa-wrench", "#747173", 2500)
                                 return
                             end
                             lib.requestAnimDict("mini@repair")
@@ -50,7 +50,7 @@ for k, v in ipairs(Config.Mechanics) do
                                 SetVehicleDeformationFixed(vehicle)
                                 SetVehicleBodyHealth(vehicle, 1000.0)
                                 SetVehicleEngineHealth(vehicle, 1000.0)
-                                Notify("Vehicle has been fixed!", "fa-solid fa-wrench", "#747173", 2500)
+                                Notify(Config.Lang.vehiclefixed, "fa-solid fa-wrench", "#747173", 2500)
                                 TriggerServerEvent("lion_mechanic:pay", Config.RepairCost)
                                 SetVehicleDoorShut(vehicle, 4, false)
                                 ClearPedTasksImmediately(ped)
@@ -62,10 +62,10 @@ for k, v in ipairs(Config.Mechanics) do
                                 SetVehicleDoorShut(vehicle, 4, false)
                             end
                         else
-                            Notify("No vehicle nearby!", "fa-solid fa-wrench", "#747173", 2500)
+                            Notify(Config.Lang.novehnearby, "fa-solid fa-wrench", "#747173", 2500)
                         end
                     else
-                        Notify(("You don't have enough money! You need $%s"):format(Config.RepairCost), "fa-solid fa-wrench", "#747173", 2500)
+                        Notify((Config.Lang.notenoughmoney):format(Config.RepairCost), "fa-solid fa-wrench", "#747173", 2500)
                     end
             end
         })
