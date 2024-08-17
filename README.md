@@ -6,8 +6,10 @@
 
 - Many configurations
 - Low resmon, 0.0ms in use and on idle 0.0ms
-- Qb-Target and ox_target support!
+- qb-target and ox_target support!
 - Very customizable
+- Logging using webhook!
+- Custom notifications support!
 
 ## 🫳 Dependecies
 
