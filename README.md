@@ -16,8 +16,8 @@
 
 ## 🔗 Links
 
-- Showcase
-- Cfx.re Forums
+- [Showcase](https://youtu.be/JD4FX_P-JTg)
+- [Cfx.re Forums](https://forum.cfx.re/t/free-lion-mechanic-supports-ox-target-and-qb-target-multilocation-support/5259596)
 
 ## 🫳 Dependecies
 
