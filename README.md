@@ -11,6 +11,11 @@
 - Logging using webhook!
 - Custom notifications support!
 
+## 🔗 Links
+
+- Showcase
+- Cfx.re Forums
+
 ## 🫳 Dependecies
 
 - [ox_target](https://github.com/overextended/ox_target) or [qb-target](https://github.com/qbcore-framework/qb-target)
