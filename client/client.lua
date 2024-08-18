@@ -1,3 +1,5 @@
+lib.locale()
+
 local ox_target = exports.ox_target
 local qbtarget = exports['qb-target']
 
@@ -30,7 +32,7 @@ for k, v in ipairs(Config.Mechanics) do
                         local isDamaged = IsVehicleDamaged(vehicle)
                         if vehicle then
                             if not isDamaged then
-                                Notify(Config.Lang.nodamaged, "fa-solid fa-wrench", "#747173", 2500)
+                                Notify(locale("nodamaged"), "fa-solid fa-wrench", "#747173", 2500)
                                 return
                             end
                             lib.requestAnimDict("mini@repair")
@@ -50,7 +52,7 @@ for k, v in ipairs(Config.Mechanics) do
                                 SetVehicleDeformationFixed(vehicle)
                                 SetVehicleBodyHealth(vehicle, 1000.0)
                                 SetVehicleEngineHealth(vehicle, 1000.0)
-                                Notify(Config.Lang.vehiclefixed, "fa-solid fa-wrench", "#747173", 2500)
+                                Notify(locale("vehiclefixed"), "fa-solid fa-wrench", "#747173", 2500)
                                 TriggerServerEvent("lion_mechanic:pay", Config.RepairCost)
                                 SetVehicleDoorShut(vehicle, 4, false)
                                 ClearPedTasksImmediately(ped)
@@ -62,10 +64,10 @@ for k, v in ipairs(Config.Mechanics) do
                                 SetVehicleDoorShut(vehicle, 4, false)
                             end
                         else
-                            Notify(Config.Lang.novehnearby, "fa-solid fa-wrench", "#747173", 2500)
+                            Notify(locale("novehnearby"), "fa-solid fa-wrench", "#747173", 2500)
                         end
                     else
-                        Notify((Config.Lang.notenoughmoney):format(Config.RepairCost), "fa-solid fa-wrench", "#747173", 2500)
+                        Notify((locale("notenoughmoney")):format(Config.RepairCost), "fa-solid fa-wrench", "#747173", 2500)
                     end
             end
         })
