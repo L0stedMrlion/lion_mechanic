@@ -19,3 +19,7 @@ client_scripts {
 server_scripts {
     'server/*.lua'
 }
+
+files {
+    "locales/*.json"
+}
