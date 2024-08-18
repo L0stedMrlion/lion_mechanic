@@ -1,0 +1,6 @@
+{
+  "nodamaged": "Vehicle you want to repair is not damaged!",
+  "vehiclefixed": "Vehicle has been fixed!",
+  "novehnearby": "No vehicle nearby!",
+  "notenoughmoney": "You don't have enough money! You need $%s"
+}
