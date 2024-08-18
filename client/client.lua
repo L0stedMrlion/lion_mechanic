@@ -82,6 +82,48 @@ for k, v in ipairs(Config.Mechanics) do
                         icon = Config.TargetIcon,
                         label = Config.TargetLabel,
                         action = function()
+                        if lib.callback.await('ox_inventory:getItemCount', false, Config.MoneyItem) >= Config.RepairCost then
+                        local vehicle = lib.getClosestVehicle(vec3(v.coords.x, v.coords.y, v.coords.z), Config.NearestVehicleRadius, false)
+                        local isDamaged = IsVehicleDamaged(vehicle)
+                        if vehicle then
+                            if not isDamaged then
+                                Notify(locale("nodamaged"), "fa-solid fa-wrench", "#747173", 2500)
+                                return
+                            end
+                            lib.requestAnimDict("mini@repair")
+                            TaskPlayAnim(ped, "mini@repair", "fixing_a_ped", 8.0, 0.0, -1, 1, 0, false, false, false)
+                            SetVehicleDoorOpen(vehicle, 4, false, false)
+                            if lib.progressBar({
+                                duration = Config.Repairtime * 1000,
+                                label = "🔧 Mechanic is reparing your vehicle",
+                                useWhileDead = false,
+                                canCancel = true,
+                                disable = {
+                                    car = true,
+                                },
+                            })
+                            then
+                                SetVehicleFixed(vehicle)
+                                SetVehicleDeformationFixed(vehicle)
+                                SetVehicleBodyHealth(vehicle, 1000.0)
+                                SetVehicleEngineHealth(vehicle, 1000.0)
+                                Notify(locale("vehiclefixed"), "fa-solid fa-wrench", "#747173", 2500)
+                                TriggerServerEvent("lion_mechanic:pay", Config.RepairCost)
+                                SetVehicleDoorShut(vehicle, 4, false)
+                                ClearPedTasksImmediately(ped)
+                                if Config.EnableWebhook then
+                                    TriggerServerEvent("lion_mechanic:log", GetPlayerName(PlayerId()), GetVehicleNumberPlateText(vehicle), GetDisplayNameFromVehicleModel(GetEntityModel(vehicle)))
+                                end
+                            else
+                                ClearPedTasksImmediately(ped)
+                                SetVehicleDoorShut(vehicle, 4, false)
+                            end
+                        else
+                            Notify(locale("novehnearby"), "fa-solid fa-wrench", "#747173", 2500)
+                        end
+                    else
+                        Notify((locale("notenoughmoney")):format(Config.RepairCost), "fa-solid fa-wrench", "#747173", 2500)
+                    end
                         end
                     }
                 },
