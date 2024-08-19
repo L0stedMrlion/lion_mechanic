@@ -5,7 +5,7 @@ lua54 "true"
 name "lion_mechanic"
 author "Mrlion"
 description "Mechanic script made by Mrlion using oxlib"
-version "1.0"
+version "1.2"
 
 shared_scripts {
     'config.lua',
