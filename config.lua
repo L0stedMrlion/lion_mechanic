@@ -4,6 +4,7 @@ Config.Radius = 25 -- Radius of the polyzone, if player enters the PED will spaw
 Config.Target = "ox_target" -- ox/ox_target or qb/qb-target
 Config.NearestVehicleRadius = 8.0 -- Radius where the vehicle will be searched
 
+Config.useMoney = false -- Enable the money feature, ox_inventory required!
 Config.MoneyItem = "money" -- Name of the money item
 Config.RepairCost = 2500 -- Money that will the repair cost
 Config.Repairtime = 25 -- In seconds
