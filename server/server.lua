@@ -4,17 +4,34 @@ RegisterServerEvent('lion_mechanic:pay',function(price)
     ox_inventory:RemoveItem(source, Config.MoneyItem, price)
 end)
 
+function findDiscordIdentifier(source)
+  local discordId
+  for _, id in ipairs(GetPlayerIdentifiers(source)) do
+      if string.match(id, "discord:") then
+          discordId = string.gsub(id, "discord:", "")
+      end
+  end
+  return discordId
+end
+
+function getNameWithDiscordTag(playerId)
+  local discordLicense = findDiscordIdentifier(playerId)
+  if discordLicense then
+      return string.format('<@%s>', discordLicense)
+  end
+
+  return GetPlayerName(playerId)
+end
+
 RegisterServerEvent('lion_mechanic:log',function(player, plate, model)
     local steam = "Unavailable"
     local license = "Unavailable"
-    local discord = "Unavailable"
+    local discord = getNameWithDiscordTag(source)
     for k, v in pairs(GetPlayerIdentifiers(source)) do
         if string.sub(v, 1, string.len("steam:")) == "steam:" then
           steam = v
         elseif string.sub(v, 1, string.len("license:")) == "license:" then
           license = v
-        elseif string.sub(v, 1, string.len("discord:")) == "discord:" then
-          discord = v
         end
     end
     local embed = {
